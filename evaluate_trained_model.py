@@ -104,12 +104,12 @@ def edit_dist(predictions, ground_truth):
 # Load the model and data
 train_data, validation_data, test_data, train_labels, validation_labels, test_labels, train_gesture_counts, test_gesture_counts = preprocessing_one_trial_out()
 # train_data, test_data, train_labels, test_labels, gesture_counts = preprocess()
-loaded_model = load_model('E:/School/McmasterU/HAT&I/Model/jigsaws_lstm/JIGSAWS_LSTM_ec.h5')
+loaded_model = load_model('E:/School/McmasterU/HAT-I/Model/jigsaws_lstm/JIGSAWS_LSTM_ec.h5')
 
 print("testlabels:")
 print(test_labels.shape)
 # loaded_model = MAMBA_Model(50,150,10,0.2797845958094579)
-# loaded_model.load_weights('E:/School/McmasterU/HAT&I/Model/jigsaws_lstm/ec_mamba_weights')
+# loaded_model.load_weights('E:/School/McmasterU/HAT-I/Model/jigsaws_lstm/ec_mamba_weights')
 print("Gesture counts in the training set:")
 display_gesture_counts(train_gesture_counts, GESTURE_MAPPING)
 print("Gesture counts in the testing set:")
@@ -148,7 +148,7 @@ plt.title('Confusion Matrix')
 plt.show()
 
 # Loss curve
-with open('E:/School/McmasterU/HAT&I/Model/jigsaws_lstm/ec_training_history.pkl', 'rb') as f:
+with open('E:/School/McmasterU/HAT-I/Model/jigsaws_lstm/ec_training_history.pkl', 'rb') as f:
     history = pickle.load(f)
 
 training_losses = history['loss']
@@ -163,14 +163,14 @@ plt.legend()
 plt.show()
 
 # Size comparison
-size_model1 = os.path.getsize('E:/School/McmasterU/HAT&I/Model/jigsaws_lstm/JIGSAWS_LSTM_no_ec.h5')
-size_model2 = os.path.getsize('E:/School/McmasterU/HAT&I/Model/jigsaws_lstm/JIGSAWS_LSTM_ec.h5')
+size_model1 = os.path.getsize('E:/School/McmasterU/HAT-I/Model/jigsaws_lstm/JIGSAWS_LSTM_no_ec.h5')
+size_model2 = os.path.getsize('E:/School/McmasterU/HAT-I/Model/jigsaws_lstm/JIGSAWS_LSTM_ec.h5')
 
 print(f"Size of Model 1: {size_model1 / (1024**2):.2f} MB")
 print(f"Size of Model 2: {size_model2 / (1024**2):.2f} MB")
 
-model1 = load_model('E:/School/McmasterU/HAT&I/Model/jigsaws_lstm/JIGSAWS_LSTM_no_ec.h5')
-model2 = load_model('E:/School/McmasterU/HAT&I/Model/jigsaws_lstm/JIGSAWS_LSTM_ec.h5')
+model1 = load_model('E:/School/McmasterU/HAT-I/Model/jigsaws_lstm/JIGSAWS_LSTM_no_ec.h5')
+model2 = load_model('E:/School/McmasterU/HAT-I/Model/jigsaws_lstm/JIGSAWS_LSTM_ec.h5')
 model1.summary()
 model2.summary()
 

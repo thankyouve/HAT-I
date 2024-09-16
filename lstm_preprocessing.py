@@ -105,10 +105,7 @@ def extract_kinematic_data(data_folder: str, trial_data: dict):
     and converts the numeric data back into the original string format.
     '''
     kinematic_data = []
-    
-    # Specify the columns you want to keep
-    # Note: Python uses 0-based indexing, so subtract 1 from each column number in your list
-    columns_to_keep = [38, 39, 40, 50, 51, 52, 56, 57, 58, 59, 69, 70, 71, 75]
+    columns_to_keep = [38, 39, 40, 50, 51, 52, 56, 57, 58, 59, 69, 70, 71, 75] # 0-based index so subtract 1 to normal column number
     
     for entry in trial_data:
         participant_id = entry['participant_id']

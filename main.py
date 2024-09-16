@@ -13,6 +13,23 @@ import os
 from lstm_preprocessing import preprocess, preprocessing_one_trial_out
 from lstm_model import evaluate_model, evaluate_model_ec, evaluate_model_mamba, run_genetic_algorithm, Individual
 
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+  try:
+    for gpu in gpus:
+      tf.config.experimental.set_memory_growth(gpu, True)
+    tf.config.experimental.set_virtual_device_configuration(
+        gpus[0],
+        [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=8192)])
+  except RuntimeError as e:
+    print("Error: ", e)
+
+from tensorflow.keras.mixed_precision import experimental as mixed_precision
+
+policy = mixed_precision.Policy('mixed_float16')
+mixed_precision.set_policy(policy)
+tf.debugging.set_log_device_placement(True)
+
 REPEATS = 10
 random.seed(41)
 GESTURE_MAPPING = {
